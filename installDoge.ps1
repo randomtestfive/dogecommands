@@ -12,7 +12,13 @@ else
 }
 $content = (Get-Content $profile) -join "`n";
 $commands = (Get-Content $PSScriptRoot\dogecommands.ps1) -join "`n";
-$content -replace '#startdoge+[\s\S]+#enddoge', $commands | Out-File $profile;
+if($content -match '#startdoge+[\s\S]+#enddoge')
+{
+	$content -replace '#startdoge+[\s\S]+#enddoge', $commands | Out-File $profile;
+}
+else
+{
+	Add-Content $profile $commands;
+}
 Write-Host "doge installed";
-& $profile;
 sleep 2;

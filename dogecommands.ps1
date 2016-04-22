@@ -1,4 +1,3 @@
-
 #startdoge
 
 function wow {
