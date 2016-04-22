@@ -1,3 +1,6 @@
+
+#startdoge
+
 function wow {
 	$loop = 1;
 	$speedmultiply = 1000;
@@ -169,3 +172,5 @@ function doge {
 		$loop--;
 	}
 }
+
+#enddoge
