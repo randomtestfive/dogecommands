@@ -14,4 +14,5 @@ Set-ExecutionPolicy Unrestricted
 to fully work.
 
 Add an alias in Bash for wow.sh
+
 Bash can also use `-warp` to go as fast as your computer lets you
