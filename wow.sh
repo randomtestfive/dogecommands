@@ -64,17 +64,20 @@ fi
 while [ $num -gt 0 ]; do
 	color=()
 	N=3
-	for index in `shuf --input-range=0-$(( ${#colors[*]} - 1 )) | head -${N}`
+	#echo "test 1"
+	for index in `shuf -i 0-"$(( ${#colors[*]} - 1 ))" | head -${N}`
 	do
 	   	color+=("${colors[$index]}")
 		#echo "${colors[$index]}"
 	done
+	#echo "test 2"
 	N=2
 	phrasetype=()
-	for index in `shuf --input-range=0-$(( ${#phrases[*]} - 1 )) | head -${N}`
+	for index in `shuf -i 0-"$(( ${#phrases[*]} - 1 ))" | head -${N}`
 	do
 		phrasetype+=("${phrases[$index]}")
 	done
+	#echo "test 3"
 	#for i in {0..2}; do
 	#	echo "${color[$i]}"
 	#	echo "${phrasetype[$i]}"
@@ -90,28 +93,28 @@ while [ $num -gt 0 ]; do
 	phrase2=${ph2[$RANDOM % ${#ph1[@]} ]}
 	#echo "$phrase2"
 	phrase3="wow"
-
+	#echo "test 4"
 	pos=($(shuf -i 0-30 -n 2))
-
+	#echo "test 5"
 	for i in {0..33}; do
 		line="doge${i}";
 		linevar=${!line}
 		#echo "$i ${pos[0]}"
 		if [ $i == ${pos[0]} ]; then
-			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1})
+			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1)
 			phraseend=$((${#phrase1}+$phrasestart))
 			frag1="${linevar:0:$((phrasestart))}"
 			frag3="${linevar:$((phraseend))}"
 			echo -e "$yellow$frag1${color[0]}$phrase1$yellow$frag3$reset"
 		elif [ $i == ${pos[1]} ]; then
-			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1})
+			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1)
 			phraseend=$((${#phrase2}+$phrasestart))
 			frag1="${linevar:0:$((phrasestart))}"
 			frag3="${linevar:$((phraseend))}"
 			echo -e "$yellow$frag1${color[1]}$phrase2$yellow$frag3$reset"
 			#echo -e "$yellow${!line}$reset${color[1]}$phrase2$reset"
 		elif [ $i == 32 ]; then
-			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1})
+			phrasestart=$(shuf -i "0-$((${#linevar}-1))" -n 1)
 			phraseend=$((${#phrase3}+$phrasestart))
 			frag1="${linevar:0:$((phrasestart))}"
 			frag3="${linevar:$((phraseend))}"
